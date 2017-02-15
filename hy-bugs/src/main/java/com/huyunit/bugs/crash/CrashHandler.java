@@ -5,6 +5,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Environment;
+import android.telephony.TelephonyManager;
 
 import com.huyunit.bugs.util.FileUtil;
 import com.huyunit.bugs.util.LogUtil;
@@ -127,6 +128,10 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
                 String versionCode = pi.versionCode + "";
                 infos.put("versionName", versionName);
                 infos.put("versionCode", versionCode);
+            }
+            TelephonyManager tm = (TelephonyManager) ctx.getSystemService(Context.TELEPHONY_SERVICE);
+            if(null != tm){
+                infos.put("imei", tm.getDeviceId());// IMEI 设备号
             }
         } catch (PackageManager.NameNotFoundException e) {
             LogUtil.e("an error occured when collect package info", e);
