@@ -1,5 +1,6 @@
 package com.huyunit.bugsdemo;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -61,6 +62,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_crashhandler:
+                System.out.println("model = " + Build.MODEL);
+                System.out.println("sdk = " + Build.VERSION.SDK_INT);
+                System.out.println("CODENAME = " + Build.VERSION.CODENAME);
+                System.out.println("BASE_OS = " + Build.VERSION.BASE_OS);
+                System.out.println("CPU_ABI = " + Build.CPU_ABI);
+                System.out.println("CPU_ABI = " + Build.SUPPORTED_ABIS);
+                System.out.println("Build.VERSION.RELEASE = " + Build.VERSION.RELEASE);
                 String s = "abc";
                 int i  = Integer.parseInt(s);
                 System.out.println("i = " + i);
